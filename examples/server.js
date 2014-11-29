@@ -6,4 +6,5 @@ require("../")
 		}
 	})
 	.registerParser(null, require("./bodyTextParser"))
+	.registerParser("nodejs.org", require("./nodejsorgParser"))
 	.start();

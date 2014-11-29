@@ -17,7 +17,7 @@ var server = Maproxy.create({
 	cacheStrategy: require("catbox-redis")
 });
 
-server.registerParser("google.com", function (response, callback) {
+server.registerParser("google.com", function (url, payload, callback) {
 	if (false) {
 		callback(new Error("Not implemented");
 	} else {
@@ -32,6 +32,7 @@ And then just `http_proxy=http://127.0.0.1:3128 curl -v http://www.google.com`
 
 ## Todo
 * [ ] SSL
-* [ ] Docs
-* [ ] Tests
 * [ ] Error handling
+* [ ] HTTP error handling
+* [ ] Tests
+* [ ] Docs
