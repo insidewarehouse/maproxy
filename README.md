@@ -31,7 +31,6 @@ server.start();
 And then just `http_proxy=http://127.0.0.1:3128 curl -v http://www.google.com`
 
 ## Todo
-* [ ] Parser registrar
 * [ ] SSL
 * [ ] Docs
 * [ ] Tests

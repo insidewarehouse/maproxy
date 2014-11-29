@@ -1,14 +1,14 @@
-var _ = require("lodash"),
-	Hapi = require("hapi"),
+var Hapi = require("hapi"),
 	Nipple = require("nipple"),
-	jsdom = require("jsdom"),
 	Url = require("url");
 
-function parse(url, payload, cb) {
+function reflectParser(url, payload, cb) {
 	cb(null, payload);
 }
 
 module.exports.create = function (options) {
+
+	var defaultParser, registeredParsers = {};
 
 	var server = new Hapi.Server({});
 
@@ -32,6 +32,10 @@ module.exports.create = function (options) {
 					return reply(err);
 				}
 
+				var domain = Url.parse(url).hostname;
+
+				var parse = registeredParsers[domain] || defaultParser || reflectParser;
+
 				parse(url, payload, function (err, parsed) {
 					reply(err || parsed);
 				});
@@ -40,6 +44,19 @@ module.exports.create = function (options) {
 		}
 	});
 
-	return server;
+	var maProxy = {
+		hapiServer: server,
+		start: server.start.bind(server),
+		registerParser: function (domain, parserFn) {
+			if (domain) {
+				registeredParsers[domain] = parserFn;
+			} else {
+				defaultParser = parserFn;
+			}
+			return maProxy;
+		}
+	};
+
+	return maProxy;
 
 };
