@@ -11,6 +11,9 @@ var Maproxy = require("maproxy");
 
 var server = Maproxy.create({
 	port: 3128,
+	cache: {
+		expiresIn: 10 * 1000
+	},
 	cacheStrategy: require("catbox-redis")
 });
 
