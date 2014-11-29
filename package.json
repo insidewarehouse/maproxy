@@ -1,0 +1,25 @@
+{
+  "name": "maproxy",
+  "version": "0.0.0",
+  "description": "A caching proxy with result parsing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/insidewarehouse/maproxy.git"
+  },
+  "keywords": [
+    "proxy",
+    "cache",
+    "crawl",
+    "crawler"
+  ],
+  "author": "Dominykas Blyžė, InsideWarehouse <hello@dominykas.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/insidewarehouse/maproxy/issues"
+  },
+  "homepage": "https://github.com/insidewarehouse/maproxy"
+}
